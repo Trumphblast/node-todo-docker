@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Add custom Inter font (optional, but nice)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto mt-10 max-w-xl p-4">
+
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">My To-Do List</h1>
+
+            <!-- Add Task Form -->
+            <form action="/add" method="POST" class="flex gap-4 mb-8">
+                <input 
+                    type="text" 
+                    name="task_content" 
+                    placeholder="Add a new task..." 
+                    class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                >
+                <input 
+                    type="submit" 
+                    value="Add Task" 
+                    class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md cursor-pointer hover:bg-blue-700 transition"
+                >
+            </form>
+
+            <!-- Task List -->
+            <ul class="space-y-4">
+                {% for task in tasks %}
+                    <li class="flex items-center bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-md">
+
+                        <!-- Task Content -->
+                        <span class="flex-1 text-lg {% if task.completed %}line-through text-gray-400{% else %}text-gray-700{% endif %}">
+                            {{ task.content }}
+                        </span>
+
+                        <!-- Action Buttons -->
+                        <div class="actions flex gap-3 ml-4">
+                            {% if not task.completed %}
+                                <a href="/complete/{{ task._id }}" 
+                                   class="text-xs font-medium text-white bg-green-500 px-3 py-2 rounded-md hover:bg-green-600 transition shadow-sm">
+                                    Complete
+                                </a>
+                            {% endif %}
+                            <a href="/delete/{{ task._id }}" 
+                               class="text-xs font-medium text-white bg-red-500 px-3 py-2 rounded-md hover:bg-red-600 transition shadow-sm">
+                                Delete
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+
+                <!-- 
+                    A good UX addition would be an "empty state".
+                    You can add this logic to your <ul>:
+                -->
+                {% if not tasks.clone()|first %}
+                <li class="text-center text-gray-500 py-4">
+                    No tasks yet. Add one above!
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
