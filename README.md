@@ -325,7 +325,7 @@ docker run -d -p 3000:3000 -e MONGO_URI="YOUR_MONGODB_CONNECTION_STRING" todo-ap
 ```
 
 Open in browser:
-`http://<EC2-Public-IP>:3000`
+`http://13.203.86.255:3000/`
 
 ---
 
