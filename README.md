@@ -338,10 +338,3 @@ Open in browser:
 ---
 
 # ✔ Project Completed
-
-If you want, I can also generate:
-✅ Architecture diagram
-✅ Badges (Build, License, Version)
-✅ A polished README cover image
-
-Would you like that?
