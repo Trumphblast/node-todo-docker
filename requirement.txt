@@ -1,2 +1,5 @@
-Flask
-pymongo
+Docker Destkop
+AWS account
+Git Hub & Git
+VS Code / Other
+
