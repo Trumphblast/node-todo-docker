@@ -32,10 +32,10 @@
 
 # **Overview & Architecture**
 
-This guide follows a structured, step-by-step workflow. Each task includes:
-###✔ Overview
-###✔ Implementation steps
-###✔ Verification
+### **This guide follows a structured, step-by-step workflow. Each task includes:**
+✔ Overview
+✔ Implementation steps
+✔ Verification
 
 ### **What You Will Accomplish**
 
